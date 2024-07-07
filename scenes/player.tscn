@@ -16,6 +16,7 @@ rotation_smoothing_enabled = true
 rotation_smoothing_speed = 7.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.243259, 1, 0.974894, 1)
 texture = ExtResource("1_rg3is")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
