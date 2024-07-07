@@ -1,14 +1,12 @@
-extends Sprite2D
-class_name Enemy
+extends State
 
 var speed : int = 100
 var velocity := Vector2()
 
-func _ready() -> void:
-	pass
-
-func apply_velocity() -> void:
+func _physics_update(delta: float) -> void:
 	if Global.player != null:
 		velocity = owner.global_position.direction_to(Global.player.global_position)
-	owner.global_position += velocity * speed
+	owner.global_position += velocity * speed * delta
 
+func update(delta: float) -> void:
+	pass

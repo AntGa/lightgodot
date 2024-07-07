@@ -8,7 +8,7 @@ func _ready() -> void:
 	health = MAX_HEALTH
 	
 func damage(attack : Attack):
+	$"../StateMachine".on_child_transition("knockbackstate")
 	health -= attack.attack_damage
-	get_parent().velocity = (global_position - attack.attack_position).normalized() * attack.knockback_force
 	if health <= 0:
 		get_parent().queue_free()
