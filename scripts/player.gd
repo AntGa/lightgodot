@@ -1,5 +1,5 @@
 extends CharacterBody2D
-const SPEED: float: float = 300.0
+const SPEED: float = 300.0
 var bullet = preload("res://scenes/bullet.tscn")
 var can_shoot: bool = true
 func _physics_process(delta) -> void:
