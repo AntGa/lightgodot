@@ -2,7 +2,7 @@ extends Sprite2D
 
 var speed : int = 100
 
-var velocity := Vector2()
+var velocity : Vector2 = Vector2()
 
 func _physics_process(delta: float) ->  void:
 	if Global.player != null:
@@ -10,6 +10,3 @@ func _physics_process(delta: float) ->  void:
 	
 	global_position += velocity * speed * delta
 
-
-func _on_hitbox_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
