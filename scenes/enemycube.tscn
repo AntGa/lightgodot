@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://m6ncufl1b083"]
+
+[ext_resource type="Texture2D" uid="uid://bbqpob4mushd8" path="res://assets/sprites/Sprite-0001.png" id="1_mccih"]
+[ext_resource type="Script" path="res://scripts/enemycube.gd" id="2_g74id"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rm665"]
+size = Vector2(16, 16)
+
+[node name="enemycube" type="Sprite2D"]
+modulate = Color(1, 0.203126, 0.230716, 1)
+texture = ExtResource("1_mccih")
+script = ExtResource("2_g74id")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+shape = SubResource("RectangleShape2D_rm665")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

@@ -13,10 +13,6 @@ func _physics_process(delta) -> void:
 func _ready() -> void:
 	$despawn.start()
 
-func _on_area_2d_area_exited(area: Area2D) -> void:
-	if area is despawn_area:
-		queue_free()
-
 
 func _on_despawn_timeout() -> void:
 	queue_free()

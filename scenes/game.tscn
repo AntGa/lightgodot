@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://00smx0xklktv"]
+[gd_scene load_steps=5 format=3 uid="uid://00smx0xklktv"]
 
 [ext_resource type="PackedScene" uid="uid://bwsklvsan4wmr" path="res://scenes/player.tscn" id="1_bg4np"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ulg5k"]
+[ext_resource type="PackedScene" uid="uid://m6ncufl1b083" path="res://scenes/enemycube.tscn" id="2_xdo8k"]
 
 [sub_resource type="Environment" id="Environment_gq3is"]
 background_mode = 3
@@ -10,13 +11,18 @@ glow_bloom = 0.15
 glow_blend_mode = 0
 
 [node name="Game" type="Node2D"]
+position = Vector2(-2, -2)
 script = ExtResource("1_ulg5k")
+
+[node name="enemycube" parent="." instance=ExtResource("2_xdo8k")]
+z_index = 4
+position = Vector2(272, -288)
 
 [node name="Player" parent="." instance=ExtResource("1_bg4np")]
 z_index = 6
+position = Vector2(3, -5)
 
 [node name="PERSPECTIVE" type="ColorRect" parent="."]
-visible = false
 z_index = 1
 offset_left = 45.0
 offset_top = 6.0
@@ -26,10 +32,10 @@ offset_bottom = 46.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gq3is")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="bACKGROUND" type="ColorRect" parent="."]
 visible = false
-offset_left = -120469.0
-offset_top = -55096.0
+offset_left = -120455.0
+offset_top = -55090.0
 offset_right = 9.99999e+10
 offset_bottom = 1e+18
 color = Color(0.676305, 0.553424, 1, 1)
