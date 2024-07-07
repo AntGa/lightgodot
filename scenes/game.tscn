@@ -1,21 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://00smx0xklktv"]
+[gd_scene load_steps=6 format=3 uid="uid://00smx0xklktv"]
 
 [ext_resource type="PackedScene" uid="uid://bwsklvsan4wmr" path="res://scenes/player.tscn" id="1_bg4np"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_ulg5k"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4648y"]
 
-[node name="background" type="ColorRect" parent="."]
-offset_left = -9923.0
-offset_top = -5942.0
-offset_right = 1e+16
-offset_bottom = 1e+17
-color = Color(0.66425, 0.517302, 0.999521, 1)
+[sub_resource type="Sky" id="Sky_ntovc"]
+sky_material = SubResource("ShaderMaterial_4648y")
+
+[sub_resource type="Environment" id="Environment_b6xij"]
+background_mode = 3
+background_color = Color(0.506724, 0.42346, 1, 1)
+sky = SubResource("Sky_ntovc")
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_ulg5k")
 
 [node name="Player" parent="." instance=ExtResource("1_bg4np")]
 z_index = 6
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="PERSPECTIVE" type="ColorRect" parent="."]
+z_index = 1
 offset_left = 45.0
 offset_top = 6.0
 offset_right = 85.0
 offset_bottom = 46.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b6xij")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -120469.0
+offset_top = -55096.0
+offset_right = 9.99999e+10
+offset_bottom = 1e+18
+color = Color(0.676305, 0.553424, 1, 1)

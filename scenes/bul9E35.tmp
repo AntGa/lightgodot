@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfafajo7lbwtj"]
+
+[ext_resource type="Texture2D" uid="uid://bbqpob4mushd8" path="res://assets/sprites/Sprite-0001.png" id="1_aql54"]
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="2_t7x8p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5oea0"]
+size = Vector2(16, 16)
+
+[node name="Bullet" type="Sprite2D"]
+modulate = Color(0.243137, 1, 0.976471, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_aql54")
+script = ExtResource("2_t7x8p")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="despawn" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_5oea0")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="despawn" to="." method="_on_timer_timeout"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
