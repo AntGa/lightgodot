@@ -14,10 +14,16 @@ size = Vector2(1154, 649)
 script = ExtResource("1_hmli4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -750
+limit_top = -750
+limit_right = 750
+limit_bottom = 750
+limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 7.0
+position_smoothing_speed = 2.0
 rotation_smoothing_enabled = true
 rotation_smoothing_speed = 7.0
+editor_draw_limits = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.243259, 1, 0.974894, 1)
