@@ -1,14 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwsklvsan4wmr"]
+[gd_scene load_steps=5 format=3 uid="uid://bwsklvsan4wmr"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_hmli4"]
 [ext_resource type="Texture2D" uid="uid://bbqpob4mushd8" path="res://assets/sprites/Sprite-0001.png" id="1_rg3is"]
-[ext_resource type="Script" path="res://scenes/despawns.gd" id="3_jwy3w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xga0c"]
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcohk"]
-size = Vector2(1154, 649)
+size = Vector2(68.0313, 40.2813)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_hmli4")
@@ -30,13 +29,12 @@ shape = SubResource("RectangleShape2D_xga0c")
 wait_time = 0.1
 one_shot = true
 
-[node name="despawns" type="Area2D" parent="."]
-script = ExtResource("3_jwy3w")
+[node name="characterarea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="despawns"]
-position = Vector2(0, -0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="characterarea"]
+position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_wcohk")
 
 [connection signal="timeout" from="reloadspeed" to="." method="_on_reload_speed_timeout"]
-[connection signal="area_entered" from="despawns" to="." method="_on_characterarea_area_entered"]
-[connection signal="area_exited" from="despawns" to="." method="_on_characterarea_area_exited"]
+[connection signal="area_entered" from="characterarea" to="." method="_on_characterarea_area_entered"]
+[connection signal="area_exited" from="characterarea" to="." method="_on_characterarea_area_exited"]
