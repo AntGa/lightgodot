@@ -5,7 +5,7 @@ var speed : int = 250
 var look_once : bool = true
 
 var attack_damage : float = 10.0
-var knockback_force : float = 0.5
+var knockback_force : float = 100.0
 
 func _physics_process(delta) -> void:
 	if look_once:
