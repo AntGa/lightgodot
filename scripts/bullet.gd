@@ -7,7 +7,7 @@ var look_once : bool = true
 var attack_damage : float = 10.0
 var knockback_force : float = 100.0
 
-func _physics_aprocess(delta) -> void:
+func _physics_process(delta) -> void:
 	if look_once:
 		look_at(get_global_mouse_position())
 		look_once = false
