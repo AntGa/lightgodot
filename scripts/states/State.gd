@@ -1,6 +1,8 @@
 extends Node2D
 class_name State
 
+signal Transitioned
+
 func Enter():
 	pass
 
