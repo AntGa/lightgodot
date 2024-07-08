@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://m6ncufl1b083"]
+[gd_scene load_steps=7 format=3 uid="uid://m6ncufl1b083"]
 
 [ext_resource type="Texture2D" uid="uid://bbqpob4mushd8" path="res://assets/sprites/Sprite-0001.png" id="1_mccih"]
 [ext_resource type="Script" path="res://scripts/enemycube.gd" id="2_g74id"]
 [ext_resource type="PackedScene" uid="uid://qv74lc34cyt8" path="res://scenes/hitbox_component.tscn" id="3_hdj8y"]
 [ext_resource type="PackedScene" uid="uid://cljxvgmg44qqy" path="res://scenes/health_component.tscn" id="4_e1at3"]
+[ext_resource type="Script" path="res://scripts/states/State Machine.gd" id="5_7e3mu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqp1d"]
 size = Vector2(16, 16)
@@ -21,3 +22,6 @@ shape = SubResource("RectangleShape2D_hqp1d")
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_e1at3")]
 MAX_HEALTH = 30.0
+
+[node name="State Machine" type="Node" parent="."]
+script = ExtResource("5_7e3mu")

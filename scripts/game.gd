@@ -1,10 +1,14 @@
 extends Node2D
+class_name State
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	Global.node_creation_parent = self
+func Enter():
+	pass
 
+func Exit():
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _exit_tree() -> void:
-	Global.node_creation_parent = null
+func Update(_delta: float):
+	pass
+
+func Physics_Update(_delta: float):
+	pass
