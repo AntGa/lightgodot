@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://qv74lc34cyt8" path="res://scenes/hitbox_component.tscn" id="3_hdj8y"]
 [ext_resource type="PackedScene" uid="uid://cljxvgmg44qqy" path="res://scenes/health_component.tscn" id="4_e1at3"]
 [ext_resource type="Script" path="res://scenes/StateMachine.gd" id="5_m45h2"]
-[ext_resource type="Script" path="res://scenes/ChasingState.gd" id="6_x0hpb"]
+[ext_resource type="Script" path="res://scripts/ChasingState.gd" id="6_x0hpb"]
 [ext_resource type="Script" path="res://scenes/KnockBackState.gd" id="7_8b4rk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqp1d"]
