@@ -17,7 +17,8 @@ func _on_enemycubehitbox_damaged(attack: Attack) -> void:
 	health -= attack.attack_damage
 	health_changed.emit(health)
 	
-	enemy.velocity = (enemy.position - attack.attack_position).normalized()*attack.knockback_force
+	### doesn't work (for now)
+	### enemy.velocity = (enemy.position - attack.attack_position).normalized()*attack.knockback_force
 	
 	if health <= 0:
 		health = 0

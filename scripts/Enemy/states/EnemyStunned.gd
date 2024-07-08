@@ -4,7 +4,6 @@ var timer : Timer
 # Upon moving to this state, initialize timer
 # and stun enemy
 func Enter():
-	print("jello")
 	timer = Timer.new()
 	timer.wait_time = 1.0
 	timer.autostart = true
