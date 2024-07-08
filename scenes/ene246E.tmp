@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://m6ncufl1b083"]
+
+[ext_resource type="Texture2D" uid="uid://bbqpob4mushd8" path="res://assets/sprites/Sprite-0001.png" id="1_mccih"]
+[ext_resource type="Script" path="res://scripts/enemycube.gd" id="2_g74id"]
+[ext_resource type="PackedScene" uid="uid://qv74lc34cyt8" path="res://scenes/hitbox_component.tscn" id="3_hdj8y"]
+[ext_resource type="PackedScene" uid="uid://cljxvgmg44qqy" path="res://scenes/health_component.tscn" id="4_e1at3"]
+[ext_resource type="Script" path="res://scenes/StateMachine.gd" id="5_m45h2"]
+[ext_resource type="Script" path="res://scenes/ChasingState.gd" id="6_x0hpb"]
+[ext_resource type="Script" path="res://scenes/KnockBackState.gd" id="7_8b4rk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqp1d"]
+size = Vector2(16, 16)
+
+[node name="enemycube" type="Sprite2D"]
+modulate = Color(1, 0.203126, 0.230716, 1)
+texture = ExtResource("1_mccih")
+script = ExtResource("2_g74id")
+
+[node name="enemycubehitbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_hdj8y")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemycubehitbox"]
+shape = SubResource("RectangleShape2D_hqp1d")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_e1at3")]
+MAX_HEALTH = 30.0
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("inital_state")]
+script = ExtResource("5_m45h2")
+inital_state = NodePath("ChasingState")
+
+[node name="ChasingState" type="Node2D" parent="StateMachine"]
+script = ExtResource("6_x0hpb")
+
+[node name="KnockBackState" type="Node2D" parent="StateMachine"]
+script = ExtResource("7_8b4rk")
