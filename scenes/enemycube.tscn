@@ -1,33 +1,64 @@
-[gd_scene load_steps=8 format=3 uid="uid://m6ncufl1b083"]
+[gd_scene load_steps=12 format=3 uid="uid://m6ncufl1b083"]
 
 [ext_resource type="Texture2D" uid="uid://bbqpob4mushd8" path="res://assets/sprites/Sprite-0001.png" id="1_mccih"]
-[ext_resource type="Script" path="res://scripts/enemycube.gd" id="2_g74id"]
-[ext_resource type="PackedScene" uid="uid://qv74lc34cyt8" path="res://scenes/hitbox_component.tscn" id="3_hdj8y"]
-[ext_resource type="PackedScene" uid="uid://cljxvgmg44qqy" path="res://scenes/health_component.tscn" id="4_e1at3"]
-[ext_resource type="Script" path="res://scripts/states/State Machine.gd" id="5_7e3mu"]
-[ext_resource type="Script" path="res://scripts/states/enemyscripts/EnemyChase.gd" id="6_yho5q"]
+[ext_resource type="Script" path="res://scripts/Enemy/enemycube.gd" id="1_umt21"]
+[ext_resource type="PackedScene" uid="uid://qv74lc34cyt8" path="res://util/components/scenes (drag and drop)/hitbox_component.tscn" id="2_gafvg"]
+[ext_resource type="PackedScene" uid="uid://cljxvgmg44qqy" path="res://util/components/scenes (drag and drop)/health_component.tscn" id="4_3pgbf"]
+[ext_resource type="Script" path="res://util/components/scripts/health_label.gd" id="4_rk8q8"]
+[ext_resource type="Script" path="res://scripts/Enemy/enemystatemachine.gd" id="5_7e3mu"]
+[ext_resource type="Script" path="res://util/components/scripts/State_label.gd" id="5_smy73"]
+[ext_resource type="Script" path="res://scripts/Enemy/states/EnemyChase.gd" id="6_yho5q"]
+[ext_resource type="Script" path="res://scripts/Enemy/states/EnemyStunned.gd" id="8_24dam"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqp1d"]
 size = Vector2(16, 16)
 
-[node name="enemycube" type="Sprite2D"]
-modulate = Color(1, 0.203126, 0.230716, 1)
-texture = ExtResource("1_mccih")
-script = ExtResource("2_g74id")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8m03"]
+size = Vector2(16, 16)
 
-[node name="enemycubehitbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_hdj8y")]
-health_component = NodePath("../HealthComponent")
+[node name="enemycube" type="CharacterBody2D"]
+modulate = Color(1, 0.203126, 0.230716, 1)
+script = ExtResource("1_umt21")
+
+[node name="enemycubehitbox" parent="." instance=ExtResource("2_gafvg")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemycubehitbox"]
 shape = SubResource("RectangleShape2D_hqp1d")
 
-[node name="HealthComponent" parent="." instance=ExtResource("4_e1at3")]
-MAX_HEALTH = 30.0
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e8m03")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mccih")
+
+[node name="Health" type="Label" parent="."]
+offset_left = -23.0
+offset_top = -30.0
+offset_right = 17.0
+offset_bottom = -7.0
+script = ExtResource("4_rk8q8")
+
+[node name="State" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -58.0
+offset_right = 20.0
+offset_bottom = -35.0
+script = ExtResource("5_smy73")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_3pgbf")]
+max_health = 20.0
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_7e3mu")
 initial_state = NodePath("EnemyChase")
 
-[node name="EnemyChase" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+[node name="EnemyChase" type="Node" parent="State Machine"]
 script = ExtResource("6_yho5q")
-enemy = NodePath("../..")
+
+[node name="EnemyStunned" type="Node" parent="State Machine"]
+script = ExtResource("8_24dam")
+
+[connection signal="damaged" from="enemycubehitbox" to="." method="_on_enemycubehitbox_damaged"]
+[connection signal="damaged" from="enemycubehitbox" to="HealthComponent" method="_on_enemycubehitbox_damaged"]
+[connection signal="health_changed" from="HealthComponent" to="Health" method="_on_health_component_health_changed"]
+[connection signal="state_label" from="State Machine" to="State" method="_on_state_machine_state_label"]

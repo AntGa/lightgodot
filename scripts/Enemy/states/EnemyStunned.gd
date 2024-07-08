@@ -1,0 +1,27 @@
+extends EnemyCubeState
+
+var timer : Timer
+# Upon moving to this state, initialize timer
+# and stun enemy
+func Enter():
+	print("jello")
+	timer = Timer.new()
+	timer.wait_time = 1.0
+	timer.autostart = true
+	timer.timeout.connect(on_timer_finished)
+	add_child(timer)
+	enemy.stunned = true
+
+
+# Upon leaving this state, clear and free all
+# state relevant stuff
+func Exit():
+	timer.stop()
+	timer.timeout.disconnect(on_timer_finished)
+	timer.queue_free()
+	timer = null
+	enemy.stunned = false
+
+
+func on_timer_finished():
+	transitioned.emit(self, "EnemyChase")

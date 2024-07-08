@@ -1,4 +1,6 @@
+class_name Player
 extends CharacterBody2D
+
 const SPEED: float = 300.0
 var bullet = preload("res://scenes/bullet.tscn")
 var can_shoot: bool = true

@@ -28,4 +28,4 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		attack.knockback_force = knockback_force
 		attack.attack_position = global_position
 		hitbox.damage(attack)
-		
+	queue_free()
