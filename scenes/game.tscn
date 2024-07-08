@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://00smx0xklktv"]
 
 [ext_resource type="PackedScene" uid="uid://bwsklvsan4wmr" path="res://scenes/player.tscn" id="1_bg4np"]
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_ulg5k"]
+[ext_resource type="Script" path="res://scripts/Global/game.gd" id="1_q373c"]
 [ext_resource type="PackedScene" uid="uid://m6ncufl1b083" path="res://scenes/enemycube.tscn" id="2_xdo8k"]
 
 [sub_resource type="Environment" id="Environment_gq3is"]
@@ -12,7 +12,7 @@ glow_blend_mode = 0
 
 [node name="Game" type="Node2D"]
 position = Vector2(-2, -2)
-script = ExtResource("1_ulg5k")
+script = ExtResource("1_q373c")
 
 [node name="enemycube" parent="." instance=ExtResource("2_xdo8k")]
 z_index = 4
