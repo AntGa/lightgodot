@@ -3,7 +3,7 @@ extends Node
 signal state_label(state: State)
 
 @export var initial_state : State
-
+@export var movement_component : MovementComponent
 
 var current_state : State
 var states : Dictionary = {}
@@ -13,7 +13,7 @@ func _ready() -> void:
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.transitioned.connect(on_child_transition)
-			
+		child.movement_component = MovementComponent
 		
 	if initial_state:
 		initial_state.enter()
