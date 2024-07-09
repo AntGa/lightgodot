@@ -39,3 +39,26 @@ offset_top = -55090.0
 offset_right = 9.99999e+10
 offset_bottom = 1e+18
 color = Color(0.676305, 0.553424, 1, 1)
+
+[node name="PERSPECTIVE2" type="ColorRect" parent="."]
+z_index = 1
+offset_left = -633.0
+offset_top = 337.0
+offset_right = -593.0
+offset_bottom = 377.0
+
+[node name="PERSPECTIVE" type="ColorRect" parent="PERSPECTIVE2"]
+z_index = 1
+layout_mode = 0
+offset_left = 220.0
+offset_top = -464.0
+offset_right = 260.0
+offset_bottom = -424.0
+
+[node name="PERSPECTIVE" type="ColorRect" parent="PERSPECTIVE2/PERSPECTIVE"]
+z_index = 1
+layout_mode = 0
+offset_left = 1250.0
+offset_top = 49.0
+offset_right = 1290.0
+offset_bottom = 89.0

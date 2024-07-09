@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwsklvsan4wmr"]
+[gd_scene load_steps=9 format=3 uid="uid://bwsklvsan4wmr"]
 
 [ext_resource type="Script" path="res://scripts/Player/player.gd" id="1_hmli4"]
 [ext_resource type="Texture2D" uid="uid://bbqpob4mushd8" path="res://assets/sprites/Sprite-0001.png" id="1_rg3is"]
+[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="2_tyuku"]
 [ext_resource type="PackedScene" uid="uid://5bsno7c5n1ds" path="res://util/components/scenes (drag and drop)/state_machine.tscn" id="3_ij8fx"]
 [ext_resource type="Script" path="res://scripts/Player/States/PlayerIdle.gd" id="4_5tsie"]
 [ext_resource type="Script" path="res://scripts/Player/States/PlayerMove.gd" id="5_dmd7i"]
@@ -13,17 +14,13 @@ size = Vector2(16, 16)
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_hmli4")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = -750
-limit_top = -750
-limit_right = 750
-limit_bottom = 750
-limit_smoothed = true
-position_smoothing_enabled = true
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+zoom = Vector2(2, 2)
 position_smoothing_speed = 2.0
-rotation_smoothing_enabled = true
 rotation_smoothing_speed = 7.0
 editor_draw_limits = true
+script = ExtResource("2_tyuku")
+target = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.243259, 1, 0.974894, 1)
