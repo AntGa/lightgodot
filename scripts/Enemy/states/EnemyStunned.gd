@@ -3,7 +3,7 @@ extends EnemyCubeState
 var timer : Timer
 # Upon moving to this state, initialize timer
 # and stun enemy
-func Enter():
+func enter():
 	timer = Timer.new()
 	timer.wait_time = 1.0
 	timer.autostart = true
@@ -14,7 +14,7 @@ func Enter():
 
 # Upon leaving this state, clear and free all
 # state relevant stuff
-func Exit():
+func exit():
 	timer.stop()
 	timer.timeout.disconnect(on_timer_finished)
 	timer.queue_free()
