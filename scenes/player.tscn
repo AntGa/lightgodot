@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwsklvsan4wmr"]
+[gd_scene load_steps=5 format=3 uid="uid://bwsklvsan4wmr"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_hmli4"]
 [ext_resource type="Texture2D" uid="uid://bbqpob4mushd8" path="res://assets/sprites/Sprite-0001.png" id="1_rg3is"]
+[ext_resource type="PackedScene" uid="uid://5bsno7c5n1ds" path="res://util/components/scenes (drag and drop)/state_machine.tscn" id="3_ij8fx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xga0c"]
 size = Vector2(16, 16)
@@ -31,5 +32,7 @@ shape = SubResource("RectangleShape2D_xga0c")
 [node name="reloadspeed" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="StateMachine" parent="." instance=ExtResource("3_ij8fx")]
 
 [connection signal="timeout" from="reloadspeed" to="." method="_on_reload_speed_timeout"]
