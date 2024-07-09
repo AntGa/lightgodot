@@ -13,7 +13,7 @@ func _ready() -> void:
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.transitioned.connect(on_child_transition)
-		child.movement_component = MovementComponent
+		child.movement_component = movement_component
 		
 	if initial_state:
 		initial_state.enter()

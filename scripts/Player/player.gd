@@ -12,12 +12,6 @@ func _exit_tree() -> void:
 	Global.player = null
 		
 func _physics_process(delta) -> void:
-	var direction: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
-	velocity.x = direction.x * SPEED
-	velocity.y = direction.y * SPEED
-	velocity = velocity.move_toward(Vector2.ZERO, SPEED * delta)
-	move_and_slide()	
-	
 	if Input.is_action_just_pressed("click") and Global.node_creation_parent != null:
 		$reloadspeed.start()
 		Global.instance_node(bullet, global_position, Global.node_creation_parent)

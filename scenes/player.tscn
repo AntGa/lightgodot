@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwsklvsan4wmr"]
+[gd_scene load_steps=8 format=3 uid="uid://bwsklvsan4wmr"]
 
 [ext_resource type="Script" path="res://scripts/Player/player.gd" id="1_hmli4"]
 [ext_resource type="Texture2D" uid="uid://bbqpob4mushd8" path="res://assets/sprites/Sprite-0001.png" id="1_rg3is"]
 [ext_resource type="PackedScene" uid="uid://5bsno7c5n1ds" path="res://util/components/scenes (drag and drop)/state_machine.tscn" id="3_ij8fx"]
 [ext_resource type="Script" path="res://scripts/Player/States/PlayerIdle.gd" id="4_5tsie"]
+[ext_resource type="Script" path="res://scripts/Player/States/PlayerMove.gd" id="5_dmd7i"]
 [ext_resource type="Script" path="res://util/components/scripts/MovementComponent.gd" id="5_seqmf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xga0c"]
@@ -35,12 +36,15 @@ shape = SubResource("RectangleShape2D_xga0c")
 wait_time = 0.1
 one_shot = true
 
-[node name="StateMachine" parent="." instance=ExtResource("3_ij8fx")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state", "movement_component") instance=ExtResource("3_ij8fx")]
+initial_state = NodePath("PlayerIdle")
+movement_component = NodePath("../MovementComponent")
 
 [node name="PlayerIdle" type="Node" parent="StateMachine"]
 script = ExtResource("4_5tsie")
 
 [node name="PlayerMove" type="Node" parent="StateMachine"]
+script = ExtResource("5_dmd7i")
 
 [node name="MovementComponent" type="Node" parent="."]
 script = ExtResource("5_seqmf")
