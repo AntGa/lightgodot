@@ -3,14 +3,14 @@ extends Node
 
 signal transition(new_state_name: StringName)
 
-func enter() -> void:
+func Enter() -> void:
 	pass
 	
-func exit() -> void:
+func Exit() -> void:
 	pass
 	
-func update(delta: float) -> void:
+func Update(delta: float) -> void:
 	pass	
 	
-func physics_update(delta: float) -> void:
+func Physics_Update(delta: float) -> void:
 	pass
