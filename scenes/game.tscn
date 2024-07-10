@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://00smx0xklktv"]
+[gd_scene load_steps=6 format=3 uid="uid://00smx0xklktv"]
 
 [ext_resource type="PackedScene" uid="uid://bwsklvsan4wmr" path="res://scenes/player.tscn" id="1_bg4np"]
 [ext_resource type="Script" path="res://scripts/Global/game.gd" id="1_q373c"]
 [ext_resource type="PackedScene" uid="uid://m6ncufl1b083" path="res://scenes/enemycube.tscn" id="2_xdo8k"]
+[ext_resource type="PackedScene" uid="uid://rvwfn6msdcj6" path="res://scenes/room.tscn" id="3_ybrp7"]
 
 [sub_resource type="Environment" id="Environment_gq3is"]
 background_mode = 3
@@ -14,13 +15,16 @@ glow_blend_mode = 0
 position = Vector2(-2, -2)
 script = ExtResource("1_q373c")
 
-[node name="enemycube" parent="." instance=ExtResource("2_xdo8k")]
-z_index = 4
-position = Vector2(272, -288)
+[node name="Room2" parent="." instance=ExtResource("3_ybrp7")]
+position = Vector2(14, -25)
 
 [node name="Player" parent="." instance=ExtResource("1_bg4np")]
 z_index = 6
-position = Vector2(3, -5)
+position = Vector2(3, -26)
+
+[node name="enemycube" parent="." instance=ExtResource("2_xdo8k")]
+z_index = 4
+position = Vector2(272, -288)
 
 [node name="PERSPECTIVE" type="ColorRect" parent="."]
 z_index = 1
@@ -47,18 +51,5 @@ offset_top = 337.0
 offset_right = -593.0
 offset_bottom = 377.0
 
-[node name="PERSPECTIVE" type="ColorRect" parent="PERSPECTIVE2"]
-z_index = 1
-layout_mode = 0
-offset_left = 220.0
-offset_top = -464.0
-offset_right = 260.0
-offset_bottom = -424.0
-
-[node name="PERSPECTIVE" type="ColorRect" parent="PERSPECTIVE2/PERSPECTIVE"]
-z_index = 1
-layout_mode = 0
-offset_left = 1250.0
-offset_top = 49.0
-offset_right = 1290.0
-offset_bottom = 89.0
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
